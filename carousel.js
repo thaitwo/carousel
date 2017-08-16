@@ -354,7 +354,7 @@ var Carousel = function () {
 }();
 
 new Carousel({
-  images: ['images/snow.jpg', 'images/valley.jpg', 'images/mountains.jpg', 'images/sunset.jpg', 'images/river.jpg'],
+  images: ['https://raw.githubusercontent.com/thaitwo/carousel/master/images/snow.jpg', 'https://raw.githubusercontent.com/thaitwo/carousel/master/images/valley.jpg', 'https://raw.githubusercontent.com/thaitwo/carousel/master/images/mountains.jpg', 'https://raw.githubusercontent.com/thaitwo/carousel/master/images/sunset.jpg', 'https://raw.githubusercontent.com/thaitwo/carousel/master/images/river.jpg'],
   breadcrumb: true,
   arrows: true,
   autoplay: true

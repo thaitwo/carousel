@@ -5,7 +5,7 @@ A full-width carousel with options for arrow navigation, breadcrumb navigation, 
 
 Download the `carousel.js` and `carousel.css` files and add into your project directory.
 
-In your html file, insert `div` container for the carousel (see below)
+In your html file, insert `div` container for the carousel like below
 
 ```html
 <div id="carousel" class="carousel"></div
@@ -25,14 +25,20 @@ Set options by passing an object as an argument. Default values are displayed be
 
 ```js
 new Carousel({
-  images: ['images/snow.jpg', 'images/valley.jpg', 'images/mountains', 'images/sunset'],
+  images: [
+  	'https://raw.githubusercontent.com/thaitwo/carousel/master/images/snow.jpg',
+  	'https://raw.githubusercontent.com/thaitwo/carousel/master/images/valley.jpg',
+    'https://raw.githubusercontent.com/thaitwo/carousel/master/images/mountains.jpg',
+    'https://raw.githubusercontent.com/thaitwo/carousel/master/images/sunset.jpg',
+    'https://raw.githubusercontent.com/thaitwo/carousel/master/images/river.jpg'
+  ],
   breadcrumb: true,
   arrows: true,
   autoplay: true
 })
 ```
 
-**`images`** (array) - An array of image links. If no array is passed, Carousel will search `<div id="carousel"></div>` for `img` elements.
+**`images`** (array) - An array of image links. If no array is passed, Carousel will search `<div id="carousel"></div>` for `img` elements and create an array of image links.
 
 **`breadcrumb`** (boolean) - If value is set to `true` carousel will display breadcrumb naviation at the bottom of carousel. If set to `false` breadcrumb navigation will not be displayed.
 
