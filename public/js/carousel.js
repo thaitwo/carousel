@@ -145,16 +145,37 @@ var Carousel = function () {
       this.renderBreadcrumbs();
     }
 
-    // ACTIVATE AUTOSLIDE
+    this.$pause = (0, _jquery2.default)('.pause');
+
+    // ACTIVATE AUTOPLAY
     if (autoslide === true) {
-      setInterval(this.nextImage.bind(this), 4000);
+      this.activateAutoplay();
     }
   }
 
+  // ACTIVATE AUTOPLAY
+
+
   _createClass(Carousel, [{
+    key: 'activateAutoplay',
+    value: function activateAutoplay() {
+      var _this = this;
+
+      var autoplay = setInterval(this.nextImage.bind(this), 4000);
+
+      this.$pause.hover(function () {
+        clearInterval(autoplay);
+      }, function () {
+        autoplay = setInterval(_this.nextImage.bind(_this), 4000);
+      });
+    }
+
+    // RENDER VIEWER CONTAINER AND INSERT INTO DOM
+
+  }, {
     key: 'renderViewerContainer',
     value: function renderViewerContainer() {
-      this.$container.prepend('<div class="carousel-viewer"></div>');
+      this.$container.prepend('<div class="carousel-viewer pause"></div>');
       this.$viewer = (0, _jquery2.default)('.carousel-viewer');
     }
 
@@ -163,17 +184,17 @@ var Carousel = function () {
   }, {
     key: 'activateKeyboard',
     value: function activateKeyboard() {
-      var _this = this;
+      var _this2 = this;
 
       (0, _jquery2.default)(document).keydown(function (event) {
 
         switch (event.keyCode) {
           case 37:
-            _this.prevImage();
+            _this2.prevImage();
             event.preventDefault();
             break;
           case 39:
-            _this.nextImage();
+            _this2.nextImage();
             event.preventDefault();
             break;
         }
@@ -187,6 +208,7 @@ var Carousel = function () {
     value: function updateBreadcrumbState(id) {
       this.$breadcrumbs.removeClass('active');
 
+      // find breadcrumb with same id as image and make it active
       var breadcrumb = this.$breadcrumbContainer.find('#' + id);
       breadcrumb.addClass('active');
     }
@@ -196,7 +218,7 @@ var Carousel = function () {
   }, {
     key: 'renderBreadcrumbs',
     value: function renderBreadcrumbs() {
-      var html = '\n      <ol id="carousel-breadcrumb" class="carousel-breadcrumb"></ol>\n    ';
+      var html = '\n      <ol id="carousel-breadcrumb" class="carousel-breadcrumb pause"></ol>\n    ';
 
       this.$container.prepend(html);
 
@@ -222,15 +244,17 @@ var Carousel = function () {
   }, {
     key: 'activateBreadcrumb',
     value: function activateBreadcrumb() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$breadcrumbContainer.on('click', 'li', function (event) {
         event.stopPropagation();
-        _this2.$breadcrumbs.removeClass('active');
-        (0, _jquery2.default)(event.target).addClass('active');
+        // get id of clicked breadcrumb
         var id = event.target.id;
 
-        _this2.displayImage(_this2.$images[id]);
+        _this3.$breadcrumbs.removeClass('active');
+        (0, _jquery2.default)(event.target).addClass('active');
+
+        _this3.displayImage(_this3.$images[id]);
       });
     }
 
@@ -239,7 +263,7 @@ var Carousel = function () {
   }, {
     key: 'renderArrows',
     value: function renderArrows() {
-      var html = '\n      <i id="next" class="fa fa-chevron-right fa-3x carousel-arrow right" aria-hidden="true"></i>\n      <i id="prev" class="fa fa-chevron-left fa-3x carousel-arrow left" aria-hidden="true"></i>\n    ';
+      var html = '\n      <i id="next" class="fa fa-angle-right fa-4x carousel-arrow right pause" aria-hidden="true"></i>\n      <i id="prev" class="fa fa-angle-left fa-4x carousel-arrow left pause" aria-hidden="true"></i>\n    ';
 
       this.$container.append(html);
 
@@ -255,16 +279,18 @@ var Carousel = function () {
   }, {
     key: 'activateArrows',
     value: function activateArrows() {
-      var _this3 = this;
+      var _this4 = this;
 
+      // show next image on arrow click
       this.$nextArrow.on('click', function (event) {
         event.stopPropagation();
-        _this3.nextImage();
+        _this4.nextImage();
       });
 
+      // show previous image on arrow click
       this.$prevArrow.on('click', function (event) {
         event.stopPropagation();
-        _this3.prevImage();
+        _this4.prevImage();
       });
     }
 

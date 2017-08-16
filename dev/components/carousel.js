@@ -28,15 +28,30 @@ class Carousel {
       this.renderBreadcrumbs();
     }
 
-    // ACTIVATE AUTOSLIDE
+    this.$pause = $('.pause');
+
+    // ACTIVATE AUTOPLAY
     if (autoslide === true) {
-      setInterval(this.nextImage.bind(this), 4000);
+      this.activateAutoplay();
     }
   }
 
 
+  // ACTIVATE AUTOPLAY
+  activateAutoplay() {
+    let autoplay = setInterval(this.nextImage.bind(this), 4000);
+
+    this.$pause.hover(() => {
+      clearInterval(autoplay);
+    }, () => {
+      autoplay = setInterval(this.nextImage.bind(this), 4000);
+    });
+  }
+
+
+  // RENDER VIEWER CONTAINER AND INSERT INTO DOM
   renderViewerContainer() {
-    this.$container.prepend(`<div class="carousel-viewer"></div>`);
+    this.$container.prepend(`<div class="carousel-viewer pause"></div>`);
     this.$viewer = $('.carousel-viewer');
   }
 
@@ -63,6 +78,7 @@ class Carousel {
   updateBreadcrumbState(id) {
     this.$breadcrumbs.removeClass('active');
 
+    // find breadcrumb with same id as image and make it active
     let breadcrumb = this.$breadcrumbContainer.find(`#${id}`);
     breadcrumb.addClass('active');
   }
@@ -71,7 +87,7 @@ class Carousel {
   // RENDER BREADCRUMB HTML INTO DOM
   renderBreadcrumbs() {
     let html = `
-      <ol id="carousel-breadcrumb" class="carousel-breadcrumb"></ol>
+      <ol id="carousel-breadcrumb" class="carousel-breadcrumb pause"></ol>
     `;
 
     this.$container.prepend(html);
@@ -98,9 +114,11 @@ class Carousel {
   activateBreadcrumb() {
     this.$breadcrumbContainer.on('click', 'li', (event) => {
       event.stopPropagation();
+      // get id of clicked breadcrumb
+      let id = event.target.id;
+
       this.$breadcrumbs.removeClass('active');
       $(event.target).addClass('active');
-      let id = event.target.id;
 
       this.displayImage(this.$images[id]);
     })
@@ -110,8 +128,8 @@ class Carousel {
   // RENDER ARROWS INTO DOM
   renderArrows() {
     let html = `
-      <i id="next" class="fa fa-chevron-right fa-3x carousel-arrow right" aria-hidden="true"></i>
-      <i id="prev" class="fa fa-chevron-left fa-3x carousel-arrow left" aria-hidden="true"></i>
+      <i id="next" class="fa fa-angle-right fa-4x carousel-arrow right pause" aria-hidden="true"></i>
+      <i id="prev" class="fa fa-angle-left fa-4x carousel-arrow left pause" aria-hidden="true"></i>
     `;
 
     this.$container.append(html);
@@ -126,11 +144,13 @@ class Carousel {
 
   // ACTIVATE CAROUSEL ARROWS
   activateArrows() {
+    // show next image on arrow click
     this.$nextArrow.on('click', (event) => {
       event.stopPropagation();
       this.nextImage();
     });
 
+    // show previous image on arrow click
     this.$prevArrow.on('click', (event) => {
       event.stopPropagation();
       this.prevImage();
