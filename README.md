@@ -1,6 +1,10 @@
 # carousel
 A full-width carousel with options for arrow navigation, breadcrumb navigation, and autoplay.
 
+#### Demo
+
+[https://thaitwo.github.io/carousel](https://thaitwo.github.io/carousel/)
+
 ## Implementation
 
 Download the `carousel.js` and `carousel.css` files and add into your project directory.
@@ -21,13 +25,13 @@ new Carousel();
 
 
 ## Options
-Set options by passing an object as an argument. Default values are displayed below.
+Set options by passing an object as an argument. Default values are displayed below (except for `images`).
 
 ```js
 new Carousel({
   images: [
-  	'https://raw.githubusercontent.com/thaitwo/carousel/master/images/snow.jpg',
-  	'https://raw.githubusercontent.com/thaitwo/carousel/master/images/valley.jpg',
+    'https://raw.githubusercontent.com/thaitwo/carousel/master/images/snow.jpg',
+    'https://raw.githubusercontent.com/thaitwo/carousel/master/images/valley.jpg',
     'https://raw.githubusercontent.com/thaitwo/carousel/master/images/mountains.jpg',
     'https://raw.githubusercontent.com/thaitwo/carousel/master/images/sunset.jpg',
     'https://raw.githubusercontent.com/thaitwo/carousel/master/images/river.jpg'
@@ -44,4 +48,4 @@ new Carousel({
 
 **`arrows`** (boolean) - If value is set to `true` navigation arrows will be displayed. If set to `false` arrows will not be displayed.
 
-**`autoplay`** (boolean) - If value is set to `true`carousel slides will autoplay.
+**`autoplay`** (boolean) - If value is set to `true`carousel autoplay will be enabled. If set to `false`, autoplay will be disabled.
