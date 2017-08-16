@@ -1,15 +1,16 @@
 # carousel
 A full-width carousel with options for arrow navigation, breadcrumb navigation, and autoplay.
 
-## Installation
+## Implementation
 
 Download the `carousel.js` and `carousel.css` files and add into your project directory.
 
-In your html file, insert `div` container for the carousel.
+In your html file, insert `div` container for the carousel (see below)
 
 ```html
 <div id="carousel" class="carousel"></div
 ```
+
 In your `.js` file, import and then create a new `Carousel` like below.
 
 ```js
@@ -24,10 +25,10 @@ Set options by passing an object as an argument. Default values are displayed be
 
 ```js
 new Carousel({
-	images: ['images/snow.jpg', 'images/valley.jpg', 'images/mountains', 'images/sunset'],
-	breadcrumb: true,
-	arrows: true,
-	autoplay: true
+  images: ['images/snow.jpg', 'images/valley.jpg', 'images/mountains', 'images/sunset'],
+  breadcrumb: true,
+  arrows: true,
+  autoplay: true
 })
 ```
 

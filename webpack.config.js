@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const extractSass = new ExtractTextPlugin({
-  filename: "css/carousel.css"
+  filename: "carousel.css"
 });
 
 module.exports = {
@@ -12,8 +12,8 @@ module.exports = {
     app: './carousel.js',
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: 'js/carousel.js',
+    path: path.resolve(__dirname),
+    filename: 'carousel.js',
   },
   resolve: {
     extensions: ['.js', '.json']

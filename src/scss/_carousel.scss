@@ -21,17 +21,6 @@
     transition: background-image .5s ease-in-out;
   }
 
-  .carousel-viewer-2 {
-    background-size: 100%;
-    background-position: center center;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    position: absolute;
-    z-index: 2;
-  }
-
   .carousel-arrow {
     color: white;
     opacity: .3;
@@ -76,11 +65,12 @@
     &:hover {
       background: white;
       cursor: pointer;
-      opacity: .4;
+      opacity: .6;
     }
 
     &.active {
       background: white;
+      opacity: 1;
     }
   }
 }

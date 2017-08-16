@@ -230,7 +230,7 @@ class Carousel {
 }
 
 new Carousel({
-  images: ['public/assets/snow.jpg', 'public/assets/valley.jpg', 'public/assets/mountains.jpg', 'public/assets/sunset.jpg'],
+  images: ['images/snow.jpg', 'images/valley.jpg', 'images/mountains.jpg', 'images/sunset.jpg', 'images/river.jpg'],
   breadcrumb: true,
   arrows: true,
   autoplay: true

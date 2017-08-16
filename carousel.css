@@ -16,15 +16,6 @@
     position: absolute;
     z-index: 2;
     transition: background-image .5s ease-in-out; }
-  .carousel .carousel-viewer-2 {
-    background-size: 100%;
-    background-position: center center;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    position: absolute;
-    z-index: 2; }
   .carousel .carousel-arrow {
     color: white;
     opacity: .3;
@@ -59,6 +50,7 @@
     .carousel-breadcrumb li:hover {
       background: white;
       cursor: pointer;
-      opacity: .4; }
+      opacity: .6; }
     .carousel-breadcrumb li.active {
-      background: white; }
+      background: white;
+      opacity: 1; }
