@@ -1,11 +1,3 @@
-.carousel-title {
-  font-family: $font-primary;
-  font-size: 32px;
-  font-weight: 600;
-  margin: 20px auto;
-  text-align: center;
-}
-
 .carousel {
   height: 450px;
   overflow: hidden;
@@ -14,11 +6,22 @@
   width: 100%;
 
   img {
-    margin-top: -12%;
     width: 100%;
   }
 
   .carousel-viewer {
+    background-size: 100%;
+    background-position: center center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+    z-index: 2;
+    transition: background-image .5s ease-in-out;
+  }
+
+  .carousel-viewer-2 {
     background-size: 100%;
     background-position: center center;
     bottom: 0;
@@ -34,7 +37,7 @@
     opacity: .3;
     position: absolute;
     text-shadow: 0 2px 4px rgba(0,0,0,.4);
-    top: 40%;
+    top: 42%;
     transition: all .3s;
     z-index: 3;
 
@@ -55,19 +58,20 @@
 
 .carousel-breadcrumb {
   bottom: 10px;
+  padding: 0;
   position: absolute;
   width: 100%;
   z-index: 3;
 
   li {
-    border: 1px solid white;
-    border-radius: 20px;
-    box-shadow: 0 2px 2px rgba($black,.24), 0 2px 4px rgba($black,.24);
+    background: rgba(white, .4);
+    border-radius: 10px;
+    box-shadow: 0 2px 2px rgba(black,.24);
     display: inline-block;
-    height: 12px;
+    height: 5px;
     margin: 0 5px;
     transition: all .3s;
-    width: 12px;
+    width: 40px;
 
     &:hover {
       background: white;
